@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maxim Kechter – Sales Profi</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <h1>Maxim Kechter</h1>
+      <ul>
+        <li><a href="#about">Über mich</a></li>
+        <li><a href="#services">Leistungen</a></li>
+        <li><a href="#contact">Kontakt</a></li>
+      </ul>
+    </nav>
+    <section class="hero">
+      <h2>Sales Excellence für komplexe Industriegüter</h2>
+      <p>Ich unterstütze Unternehmen beim Auf- und Ausbau ihres B2B-Vertriebs – strategisch, systematisch, international.</p>
+    </section>
+  </header>
+
+  <main>
+    <section id="about" class="section">
+      <h2>Über mich</h2>
+      <p>Ich bin Maxim Kechter, Sales-Profi mit über 20 Jahren Erfahrung im internationalen Vertrieb von erklärungsbedürftigen Produkten. Ob technische Systemlösungen, CapEx-Projekte oder neue Märkte – ich bringe Struktur in Ihre Vertriebsprozesse und sichere nachhaltiges Wachstum.</p>
+    </section>
+
+    <section id="services" class="section">
+      <h2>Leistungen</h2>
+      <ul>
+        <li>Aufbau & Skalierung internationaler Vertriebskanäle</li>
+        <li>Vertriebsstrategie für technische Produkte</li>
+        <li>Angebotsmanagement & Vertragsverhandlung (CapEx)</li>
+        <li>Kundenakquise EMEA / CEE / Asien</li>
+        <li>Coaching von Vertriebsmitarbeitern</li>
+      </ul>
+    </section>
+
+    <section id="contact" class="section">
+      <h2>Kontakt</h2>
+      <form action="mailto:deine@email.de" method="post" enctype="text/plain">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <label for="email">E-Mail:</label>
+        <input type="email" id="email" name="email" required>
+        <label for="message">Nachricht:</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
+        <button type="submit">Absenden</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Maxim Kechter · <a href="https://www.linkedin.com/in/..." target="_blank">LinkedIn</a></p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
