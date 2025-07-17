@@ -1,62 +1,43 @@
+
 <!DOCTYPE html>
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Maxim Kechter – Sales Profi</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Meine Webseite – Maxim Kechter</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-<body>
-  <header>
-    <nav>
-      <h1>Maxim Kechter</h1>
-      <ul>
-        <li><a href="#about">Über mich</a></li>
-        <li><a href="#services">Leistungen</a></li>
-        <li><a href="#contact">Kontakt</a></li>
-      </ul>
-    </nav>
-    <section class="hero">
-      <h2>Sales Excellence für komplexe Industriegüter</h2>
-      <p>Ich unterstütze Unternehmen beim Auf- und Ausbau ihres B2B-Vertriebs – strategisch, systematisch, international.</p>
-    </section>
+<body style="font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f7f9fb;">
+
+  <header style="background-color: #111827; padding: 20px; color: white;">
+    <h1 style="margin: 0;">Maxim Kechter</h1>
   </header>
 
-  <main>
-    <section id="about" class="section">
-      <h2>Über mich</h2>
-      <p>Ich bin Maxim Kechter, Sales-Profi mit über 20 Jahren Erfahrung im internationalen Vertrieb von erklärungsbedürftigen Produkten. Ob technische Systemlösungen, CapEx-Projekte oder neue Märkte – ich bringe Struktur in Ihre Vertriebsprozesse und sichere nachhaltiges Wachstum.</p>
+  <main style="padding: 40px;">
+    <section id="intro">
+      <h2>Willkommen auf meiner Homepage</h2>
+      <p>Ich bin Business Development Manager mit Fokus auf EMEA & CEE.</p>
     </section>
 
-    <section id="services" class="section">
-      <h2>Leistungen</h2>
-      <ul>
-        <li>Aufbau & Skalierung internationaler Vertriebskanäle</li>
-        <li>Vertriebsstrategie für technische Produkte</li>
-        <li>Angebotsmanagement & Vertragsverhandlung (CapEx)</li>
-        <li>Kundenakquise EMEA / CEE / Asien</li>
-        <li>Coaching von Vertriebsmitarbeitern</li>
-      </ul>
-    </section>
+    <section id="kontakt" style="padding-top: 40px;">
+      <h2 style="color: #111827;">Kontakt</h2>
 
-    <section id="contact" class="section">
-      <h2>Kontakt</h2>
-      <form action="mailto:deine@email.de" method="post" enctype="text/plain">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
-        <label for="email">E-Mail:</label>
-        <input type="email" id="email" name="email" required>
-        <label for="message">Nachricht:</label>
-        <textarea id="message" name="message" rows="4" required></textarea>
-        <button type="submit">Absenden</button>
+      <form action="https://formsubmit.co/DEINE@EMAIL.DE" method="POST" style="background: white; padding: 20px; border-radius: 8px; max-width: 500px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://maxik-art.github.io/Maxim.V2/danke.html">
+
+        <label for="name" style="display:block; margin-top:15px;">Name:</label>
+        <input type="text" name="name" required style="width:100%; padding:10px; border:1px solid #ccc; border-radius:4px;">
+
+        <label for="email" style="display:block; margin-top:15px;">E-Mail:</label>
+        <input type="email" name="email" required style="width:100%; padding:10px; border:1px solid #ccc; border-radius:4px;">
+
+        <label for="message" style="display:block; margin-top:15px;">Nachricht:</label>
+        <textarea name="message" rows="5" required style="width:100%; padding:10px; border:1px solid #ccc; border-radius:4px;"></textarea>
+
+        <button type="submit" style="margin-top:20px; background-color:#111827; color:white; border:none; padding:12px; width:100%; border-radius:4px; font-size:16px; cursor:pointer;">Absenden</button>
       </form>
     </section>
   </main>
 
-  <footer>
-    <p>&copy; 2025 Maxim Kechter · <a href="https://www.linkedin.com/in/maxim-kechter" target="_blank">LinkedIn</a></p>
-  </footer>
-
-  <script src="script.js"></script>
 </body>
 </html>
