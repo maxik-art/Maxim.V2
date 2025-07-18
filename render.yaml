@@ -1,6 +1,0 @@
-
-services:
-  - type: static
-    name: ai-website
-    env: static
-    staticPublishPath: .
