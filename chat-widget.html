@@ -1,0 +1,139 @@
+
+<!-- Floating Chat Button & Widget -->
+<style>
+#chat-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #111827;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  font-size: 24px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+  cursor: pointer;
+  z-index: 9999;
+}
+#chat-widget {
+  display: none;
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  width: 350px;
+  max-width: 90%;
+  height: 500px;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+  z-index: 9999;
+  flex-direction: column;
+}
+#chat-header {
+  background-color: #111827;
+  color: white;
+  padding: 10px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#chat-close {
+  cursor: pointer;
+  font-weight: bold;
+}
+#chat-body {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+}
+#chat-input {
+  border-top: 1px solid #ccc;
+  padding: 10px;
+  display: flex;
+}
+#user-text {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+#send-btn {
+  background-color: #111827;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  margin-left: 5px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+</style>
+
+<button id="chat-button">💬</button>
+
+<div id="chat-widget">
+  <div id="chat-header">
+    <span>AI Assistant</span>
+    <span id="chat-close">✖</span>
+  </div>
+  <div id="chat-body">
+    <p>🤖 Hello! Ask me anything about AI or Sales.</p>
+  </div>
+  <div id="chat-input">
+    <input type="text" id="user-text" placeholder="Type your message..." />
+    <button id="send-btn">Send</button>
+  </div>
+</div>
+
+<script>
+// Get elements
+const chatButton = document.getElementById('chat-button');
+const chatWidget = document.getElementById('chat-widget');
+const chatClose = document.getElementById('chat-close');
+const chatBody = document.getElementById('chat-body');
+const userText = document.getElementById('user-text');
+const sendBtn = document.getElementById('send-btn');
+
+// Load API URL from .env (if available)
+let API_URL = "/api/ask"; // default fallback
+fetch('.env')
+  .then(response => response.text())
+  .then(text => {
+    const match = text.match(/AI_BACKEND_URL=(.+)/);
+    if (match) API_URL = match[1].trim();
+  });
+
+// Toggle widget
+chatButton.onclick = () => {
+  chatWidget.style.display = 'flex';
+};
+chatClose.onclick = () => {
+  chatWidget.style.display = 'none';
+};
+
+// Send message
+sendBtn.onclick = async () => {
+  const message = userText.value.trim();
+  if (!message) return;
+  chatBody.innerHTML += `<p><strong>You:</strong> ${message}</p>`;
+  userText.value = '';
+  chatBody.innerHTML += `<p><em>AI is typing...</em></p>`;
+  chatBody.scrollTop = chatBody.scrollHeight;
+  try {
+    const res = await fetch(API_URL, {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({message})
+    });
+    const data = await res.json();
+    const reply = data.reply ? data.reply : "⚠️ Error fetching response.";
+    chatBody.innerHTML += `<p><strong>AI:</strong> ${reply}</p>`;
+  } catch (err) {
+    chatBody.innerHTML += `<p><strong>AI:</strong> ⚠️ Network error.</p>`;
+  }
+  chatBody.scrollTop = chatBody.scrollHeight;
+};
+</script>
