@@ -188,175 +188,98 @@
   
 <!-- Floating Chat Button & Widget -->
 <style>
-#chat-button {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background-color: #111827;
-  color: #fff;
-  border: none;
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  font-size: 24px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-  cursor: pointer;
-  z-index: 9999;
-}
-#chat-widget {
-  display: none;
-  position: fixed;
-  bottom: 90px;
-  right: 20px;
-  width: 350px;
-  max-width: 90%;
-  height: 500px;
-  background: #fff;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
-  z-index: 9999;
-  flex-direction: column;
-}
-#chat-header {
-  background-color: #111827;
-  color: white;
-  padding: 10px;
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-#chat-close {
-  cursor: pointer;
-  font-weight: bold;
-}
-#chat-body {
-  flex: 1;
-  padding: 10px;
-  overflow-y: auto;
-}
-#chat-input {
-  border-top: 1px solid #ccc;
-  padding: 10px;
-  display: flex;
-  flex-direction: row;       /* Elemente nebeneinander */
-  align-items: center;       /* vertikal zentrieren */
-  gap: 8px;                  /* Abstand zwischen Input und Button */
-}
 
-#user-text {
-  flex: 1;                   /* nimmt gesamte freie Breite ein */
-  height: 45px;              /* angenehm groß */
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-}
+        body {
+            font-family: Arial, sans-serif;
+        }
 
-#send-btn {
-  flex-shrink: 0;            /* Button wird nicht schmaler */
-  height: 45px;              /* gleiche Höhe wie Input */
-  padding: 0 16px;
-  background-color: #111827;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 16px;
-}
-}
-#user-text {
-  flex: 1;
-  height: 50px;            /* größere Höhe */
-  padding: 10px 12px;      /* weicherer Abstand */
-  font-size: 16px;         /* größere Schrift */
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  resize: none;            /* verhindert, dass der User die Größe verändert */
-}
-}
-#send-btn {
-  background-color: #111827;
-  color: white;
-  border: none;
-  padding: 8px 12px;
-  margin-left: 5px;
-  border-radius: 4px;
-  cursor: pointer;
-}
-</style>
+        #chat-widget {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 350px;
+            max-height: 500px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            background-color: #fff;
+        }
 
-<button id="chat-button">💬</button>
+        #chat-header {
+            background-color: #111827;
+            color: #fff;
+            padding: 10px;
+            text-align: left;
+            font-weight: bold;
+        }
 
-<div id="chat-widget">
-  <div id="chat-header">
-    <span>AI Assistant</span>
-    <span id="chat-close">✖</span>
-  </div>
-  <div id="chat-body">
-    <p>🤖 Hello! Ask me anything about AI or Sales.</p>
-  </div>
-  <div id="chat-input">
-    <input type="text" id="user-text" placeholder="Type your message..." />
-    <button id="send-btn">Send</button>
-  </div>
-</div>
+        #chat-messages {
+            flex: 1;
+            padding: 10px;
+            overflow-y: auto;
+        }
 
-<script>
-// Get elements
-const chatButton = document.getElementById('chat-button');
-const chatWidget = document.getElementById('chat-widget');
-const chatClose = document.getElementById('chat-close');
-const chatBody = document.getElementById('chat-body');
-const userText = document.getElementById('user-text');
-const sendBtn = document.getElementById('send-btn');
+        #chat-input {
+            border-top: 1px solid #ccc;
+            padding: 10px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 8px;
+        }
 
-// Load API URL from .env (if available)
-let API_URL = "/api/ask"; // default fallback
-fetch('.env')
-  .then(response => response.text())
-  .then(text => {
-    const match = text.match(/AI_BACKEND_URL=(.+)/);
-    if (match) API_URL = match[1].trim();
-  });
+        #user-text {
+            flex: 1;
+            height: 45px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+        }
 
-// Toggle widget
-chatButton.onclick = () => {
-  chatWidget.style.display = 'flex';
-};
-chatClose.onclick = () => {
-  chatWidget.style.display = 'none';
-};
+        #send-btn {
+            flex-shrink: 0;
+            height: 45px;
+            padding: 0 16px;
+            background-color: #111827;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div id="chat-widget">
+        <div id="chat-header">AI Assistant</div>
+        <div id="chat-messages">
+            🤖 Hello! Ask me anything about AI or Sales.
+        </div>
+        <div id="chat-input">
+            <input id="user-text" placeholder="Type your message..." />
+            <button id="send-btn">Send</button>
+        </div>
+    </div>
+    <script>
+        const sendBtn = document.getElementById('send-btn');
+        const userText = document.getElementById('user-text');
+        const chatMessages = document.getElementById('chat-messages');
 
-// Send message
-sendBtn.onclick = async () => {
-  const message = userText.value.trim();
-  if (!message) return;
-  chatBody.innerHTML += `<p><strong>You:</strong> ${message}</p>`;
-  userText.value = '';
-  chatBody.innerHTML += `<p><em>AI is typing...</em></p>`;
-  chatBody.scrollTop = chatBody.scrollHeight;
-  try {
-    const res = await fetch(API_URL, {
-      method: "POST",
-      headers: {"Content-Type": "application/json"},
-      body: JSON.stringify({message})
-    });
-    const data = await res.json();
-    const reply = data.reply ? data.reply : "⚠️ Error fetching response.";
-    chatBody.innerHTML += `<p><strong>AI:</strong> ${reply}</p>`;
-  } catch (err) {
-    chatBody.innerHTML += `<p><strong>AI:</strong> ⚠️ Network error.</p>`;
-  }
-  chatBody.scrollTop = chatBody.scrollHeight;
-};
-</script>
-  
-<!-- Floating Chat-Widget -->
-<link rel="stylesheet" href="https://dein-cdn.com/chat-widget.css">
-<script src="https://dein-cdn.com/chat-widget.js" defer></script>
+        sendBtn.addEventListener('click', () => {
+            const message = userText.value.trim();
+            if (message) {
+                const userMsg = document.createElement('div');
+                userMsg.textContent = "🧑‍💻 " + message;
+                chatMessages.appendChild(userMsg);
+                userText.value = '';
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+        });
+    </script>
   
 </body>
 </html>
