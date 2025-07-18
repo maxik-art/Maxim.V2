@@ -241,6 +241,31 @@
   border-top: 1px solid #ccc;
   padding: 10px;
   display: flex;
+  flex-direction: row;       /* Elemente nebeneinander */
+  align-items: center;       /* vertikal zentrieren */
+  gap: 8px;                  /* Abstand zwischen Input und Button */
+}
+
+#user-text {
+  flex: 1;                   /* nimmt gesamte freie Breite ein */
+  height: 45px;              /* angenehm groß */
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+#send-btn {
+  flex-shrink: 0;            /* Button wird nicht schmaler */
+  height: 45px;              /* gleiche Höhe wie Input */
+  padding: 0 16px;
+  background-color: #111827;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+}
 }
 #user-text {
   flex: 1;
