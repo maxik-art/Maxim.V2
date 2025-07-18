@@ -1,43 +1,122 @@
 
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Meine Webseite – Maxim Kechter</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Maxim Kechter – Sales Professional</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f7f9fb;
+    }
+    header {
+      background-color: #111827;
+      padding: 20px;
+      color: white;
+    }
+    main {
+      padding: 40px;
+    }
+    section {
+      margin-bottom: 40px;
+    }
+    form {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      max-width: 500px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    button {
+      margin-top: 20px;
+      background-color: #111827;
+      color: white;
+      border: none;
+      padding: 12px;
+      width: 100%;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+    }
+  </style>
 </head>
-<body style="font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f7f9fb;">
+<body>
 
-  <header style="background-color: #111827; padding: 20px; color: white;">
-    <h1 style="margin: 0;">Maxim Kechter</h1>
+  <header>
+    <h1>Maxim Kechter</h1>
   </header>
 
-  <main style="padding: 40px;">
+  <main>
     <section id="intro">
-      <h2>Willkommen auf meiner Homepage</h2>
-      <p>Ich bin Business Development Manager mit Fokus auf EMEA & CEE.</p>
+      <h2>Welcome to My Homepage</h2>
+      <p>I am a Business Development Manager focused on EMEA & CEE.</p>
     </section>
 
-    <section id="kontakt" style="padding-top: 40px;">
-      <h2 style="color: #111827;">Kontakt</h2>
+    <section id="about">
+      <h2>About Me</h2>
+      <p>I’m Maxim Kechter, a sales professional with over 20 years of experience in international B2B sales of complex and technical solutions. Whether it’s capital equipment, system integration, or new market entry – I bring structure and long-term success to your sales process.</p>
+    </section>
 
-      <form action="https://formsubmit.co/maxim.s.kechter@gmail.com" method="POST" style="background: white; padding: 20px; border-radius: 8px; max-width: 500px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_next" value="https://maxik-art.github.io/Maxim.V2/danke.html">
+    <section id="services">
+      <h2>Services</h2>
+      <ul>
+        <li>Building & scaling international sales channels</li>
+        <li>Sales strategy for technical products</li>
+        <li>Bid management & contract negotiation (CapEx)</li>
+        <li>Customer acquisition in EMEA / CEE / Asia</li>
+        <li>Coaching of sales staff</li>
+      </ul>
+    </section>
 
-        <label for="name" style="display:block; margin-top:15px;">Name:</label>
-        <input type="text" name="name" required style="width:100%; padding:10px; border:1px solid #ccc; border-radius:4px;">
+    <section id="contact">
+      <h2>Contact</h2>
+      <form action="https://formsubmit.co/maxim.s.kechter@gmail.com" method="POST" onsubmit="return validateForm();">
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="hidden" name="_next" value="https://maxik-art.github.io/Maxim.V2/thank-you.html" />
 
-        <label for="email" style="display:block; margin-top:15px;">E-Mail:</label>
-        <input type="email" name="email" required style="width:100%; padding:10px; border:1px solid #ccc; border-radius:4px;">
+        <label for="name">Name:</label>
+        <input type="text" name="name" required />
 
-        <label for="message" style="display:block; margin-top:15px;">Nachricht:</label>
-        <textarea name="message" rows="5" required style="width:100%; padding:10px; border:1px solid #ccc; border-radius:4px;"></textarea>
+        <label for="email">Email:</label>
+        <input type="email" name="email" required />
 
-        <button type="submit" style="margin-top:20px; background-color:#111827; color:white; border:none; padding:12px; width:100%; border-radius:4px; font-size:16px; cursor:pointer;">Absenden</button>
+        <label for="message">Message:</label>
+        <textarea name="message" rows="5" required></textarea>
+
+        <label>
+          <input type="checkbox" id="gdprConsent" required />
+          I have read and agree to the <a href="privacy_policy.pdf" target="_blank">privacy policy</a>.
+        </label>
+
+        <button type="submit">Send Message</button>
       </form>
     </section>
   </main>
+
+  <script>
+    function validateForm() {
+      const consent = document.getElementById('gdprConsent');
+      if (!consent.checked) {
+        alert('Please accept the privacy policy before submitting.');
+        return false;
+      }
+      return true;
+    }
+  </script>
 
 </body>
 </html>
