@@ -6,12 +6,14 @@ body {
     background-color: #f5f7f9;
     color: #333;
 }
+
 header {
     background-color: #111827;
     color: white;
     padding: 20px;
     text-align: center;
 }
+
 main {
     padding: 20px;
 }
@@ -22,6 +24,7 @@ a {
     color: #1d4ed8;
     text-decoration: none;
 }
+
 footer {
     text-align: center;
     padding: 10px;
