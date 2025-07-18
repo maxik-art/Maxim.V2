@@ -4,68 +4,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maxim Kechter - AI Page</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Profile with AI Assistant</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-gray-50 text-gray-800">
-    <header class="bg-gray-900 text-white py-6 text-center">
-        <h1 class="text-3xl font-bold">Maxim Kechter</h1>
-        <p class="mt-2">International Sales Leader & AI Enthusiast</p>
-    </header>
-    <main class="max-w-3xl mx-auto py-8 px-4">
-        <section class="mb-8">
-            <h2 class="text-2xl font-semibold text-gray-900">Personal Statement</h2>
-            <p class="mt-2 italic">“We rise by lifting others.”</p>
-        </section>
-        <section class="mb-8">
-            <h2 class="text-2xl font-semibold text-gray-900">Services</h2>
-            <div class="mt-4">
-                <h3 class="text-xl font-medium">For Companies</h3>
-                <ul class="list-disc list-inside mt-2">
-                    <li>CapEx bid management and contract negotiation</li>
-                    <li>Scaling international sales teams (EMEA / CEE / Asia)</li>
-                    <li>Sales strategy and technical B2B consulting</li>
-                </ul>
-            </div>
-            <div class="mt-4">
-                <h3 class="text-xl font-medium">Charity Mentoring</h3>
-                <ul class="list-disc list-inside mt-2">
-                    <li>Career coaching for young adults and career changers</li>
-                    <li>Support with CVs, cover letters, and LinkedIn profiles</li>
-                    <li>Intro to digital tools and AI basics</li>
-                    <li>One-on-one guidance for challenging situations</li>
-                </ul>
-            </div>
-        </section>
-        <section class="mb-8">
-            <h2 class="text-2xl font-semibold text-gray-900">Core Competencies</h2>
-            <ul class="list-disc list-inside mt-2">
-                <li>Business strategy & financial acumen</li>
-                <li>Team leadership & talent development</li>
-                <li>Risk management & decision-making</li>
-                <li>Negotiation & stakeholder communication</li>
-            </ul>
-        </section>
-        <section class="mb-8">
-            <h2 class="text-2xl font-semibold text-gray-900">Certificates</h2>
-            <ul class="list-disc list-inside mt-2">
-                <li>Cambridge English: First (FCE) – CEFR Level B2</li>
-                <li>Sales Strategy & Negotiation – Online Course</li>
-                <li>Digital Marketing for B2B – Online Course</li>
-                <li>Technical Product Management – Tech University</li>
-            </ul>
-        </section>
-        <section class="mb-8">
-            <h2 class="text-2xl font-semibold text-gray-900">Connect</h2>
-            <p class="mt-2"><a href="#" class="text-blue-600 hover:underline">LinkedIn Profile</a></p>
-        </section>
-        <section>
-            <h2 class="text-2xl font-semibold text-gray-900">Contact</h2>
-            <p class="mt-2">Email: <a href="mailto:maxim@example.com" class="text-blue-600 hover:underline">maxim@example.com</a></p>
-        </section>
-    </main>
-    <footer class="bg-gray-900 text-white py-4 text-center">
-        &copy; 2025 Maxim Kechter
-    </footer>
+<body>
+    <div class="container">
+        <h2>For Companies</h2>
+        <ul>
+            <li>CapEx bid management and contract negotiation</li>
+            <li>Scaling international sales teams (EMEA / CEE / Asia)</li>
+            <li>Sales strategy and technical B2B consulting</li>
+        </ul>
+
+        <h2>Charity Mentoring</h2>
+        <ul>
+            <li>Career coaching for young adults and career changers</li>
+            <li>Support with CVs, cover letters, and LinkedIn profiles</li>
+            <li>Intro to digital tools and AI basics</li>
+            <li>One-on-one guidance for challenging situations</li>
+        </ul>
+
+        <h2>Core Competencies</h2>
+        <ul>
+            <li>Business strategy & financial acumen</li>
+            <li>Team leadership & talent development</li>
+            <li>Risk management & decision-making</li>
+            <li>Negotiation & stakeholder communication</li>
+        </ul>
+
+        <h2>Certificates</h2>
+        <ul>
+            <li>Cambridge English: First (FCE) – CEFR Level B2</li>
+            <li>Sales Strategy & Negotiation – Online Course</li>
+            <li>Digital Marketing for B2B – Online Course</li>
+            <li>Technical Product Management – Tech University</li>
+        </ul>
+
+        <h2>Connect</h2>
+        <p><a href="#">LinkedIn Profile</a></p>
+
+        <h2>Contact</h2>
+        <p>Email: <a href="mailto:maxim@example.com">maxim@example.com</a></p>
+
+        <h2>AI Assistant</h2>
+        <div class="ai-assistant">
+            <input type="text" id="userInput" placeholder="Ask me anything...">
+            <button onclick="sendMessage()">Ask</button>
+            <div id="response" class="response"></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
