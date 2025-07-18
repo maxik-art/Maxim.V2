@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maxim Kechter - AI Page</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Maxim Kechter</h1>
+        <p>International B2B Sales & AI Synergies</p>
+    </header>
+    <main>
+        <!-- ... dein bisheriger Inhalt ... -->
+        <section id="contact">
+            <h2>Contact</h2>
+            <form action="https://formsubmit.co/maxim.s.kechter@gmail.com" method="POST" onsubmit="return validateForm();">
+                <input type="hidden" name="_captcha" value="false" />
+                <input type="hidden" name="_next" value="https://maxik-art.github.io/Maxim.V2/thank-you.html" />
+
+                <label for="name">Name:</label>
+                <input type="text" name="name" required />
+
+                <label for="email">Email:</label>
+                <input type="email" name="email" required />
+
+                <label for="message">Message:</label>
+                <textarea name="message" rows="5" required></textarea>
+
+                <label>
+                  <input type="checkbox" id="gdprConsent" required />
+                  I have read and agree to the <a href="privacy_policy.pdf" target="_blank">privacy policy</a>.
+                </label>
+
+                <button type="submit">Send Message</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 Maxim Kechter</p>
+    </footer>
+</body>
+</html>
