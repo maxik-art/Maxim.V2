@@ -1,29 +1,34 @@
+// Warten bis DOM geladen ist
+document.addEventListener("DOMContentLoaded", function () {
+    const toggleBtn = document.getElementById("chatToggle");
+    const chatWindow = document.getElementById("chatWindow");
 
-function sendMessage() {
-    var userInput = document.getElementById("userInput").value;
-    var responseDiv = document.getElementById("response");
-    if(userInput.trim() !== "") {
-        responseDiv.innerHTML = "<strong>AI:</strong> Thanks for your question! I’ll get back to you soon.";
-    } else {
-        responseDiv.innerHTML = "<strong>AI:</strong> Please enter a question.";
-    }
-}
-
-// Toggle Chatfenster
-document.getElementById("chatToggle").addEventListener("click", function() {
-  const chatWindow = document.getElementById("chatWindow");
-  chatWindow.classList.toggle("show");
-  chatWindow.classList.toggle("hidden");
+    // Toggle Chatfenster ein-/ausblenden
+    toggleBtn.addEventListener("click", function () {
+        chatWindow.classList.toggle("hidden");
+    });
 });
 
-// Simulation
-//function askAssistant() {
-  const userInput = document.getElementById("userInput").value;
-  const aiResponse = document.getElementById("aiResponse");
+// Funktion zum Senden an Backend
+function askAssistant() {
+    const userInput = document.getElementById("userInput").value;
+    const aiResponse = document.getElementById("aiResponse");
 
-  // Testantwort
-  aiResponse.innerHTML = `🤖 (Demo Mode) You asked: '${userInput}'. This is a placeholder response.`;
+    fetch("https://ai-website-with-assistant.onrender.com/ask", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ question: userInput })
+    })
+    .then(response => response.json())
+    .then(data => {
+        aiResponse.innerHTML = `🤖 ${data.answer}`;
+    })
+    .catch(error => {
+        aiResponse.innerHTML = "❌ Error contacting AI Assistant.";
+        console.error(error);
+    });
 
-  // Optional: Feld leeren
-  document.getElementById("userInput").value = "";
+    document.getElementById("userInput").value = "";
 }
