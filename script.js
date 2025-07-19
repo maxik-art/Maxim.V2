@@ -17,7 +17,7 @@ document.getElementById("chatToggle").addEventListener("click", function() {
 });
 
 // Simulation
-function askAssistant() {
+//function askAssistant() {
   const userInput = document.getElementById("userInput").value;
   const aiResponse = document.getElementById("aiResponse");
 
