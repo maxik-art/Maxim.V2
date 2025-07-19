@@ -16,6 +16,18 @@ main {
     padding: 20px; /* Abstand um den Hauptinhalt */
 }
 
+/* Styling für die Liste */
+.companies ul {
+    line-height: 1.6; /* Erhöht Zeilenabstand für bessere Lesbarkeit */
+    padding-left: 20px; /* Einzug für Bullets */
+    list-style-type: disc; /* Standard-Bullet Points */
+}
+
+/* Styling für einzelne Listenelemente */
+.companies ul li {
+    margin-bottom: 8px; /* Abstand zwischen Bullet Points */
+}
+
 #contact {
     background-color: #ffffff;/* Weißer Hintergrund für Formularbox */
     padding: 30px; /* Innenabstand im Formular-Container */
