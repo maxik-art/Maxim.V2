@@ -134,13 +134,16 @@ textarea {
 }
 
 button {
-  width: 100%;
-  background: #007bff;
-  color: #fff;
-  border: none;
-  padding: 8px;
-  border-radius: 4px;
-  cursor: pointer;
+    background-color: #1d4ed8;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #2563eb;
 }
 
 /* Start: Chat-Fenster versteckt */
