@@ -16,6 +16,11 @@ main {
     padding: 20px; /* Abstand um den Hauptinhalt */
 }
 
+h2, h3 {
+    color: #1d4ed8; /* Einheitliche Farbe */
+    font-weight: bold;
+}
+
 /* Styling für die Liste */
 .companies ul {
     line-height: 1.6; /* Erhöht Zeilenabstand für bessere Lesbarkeit */
