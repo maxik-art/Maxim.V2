@@ -8,3 +8,10 @@ function sendMessage() {
         responseDiv.innerHTML = "<strong>AI:</strong> Please enter a question.";
     }
 }
+
+// Toggle Chatfenster
+document.getElementById("chatToggle").addEventListener("click", function() {
+  const chatWindow = document.getElementById("chatWindow");
+  chatWindow.classList.toggle("show");
+  chatWindow.classList.toggle("hidden");
+});
