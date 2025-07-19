@@ -1,21 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AI Chat Assistant</title>
-  <link rel="stylesheet" href="chat.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Maxik AI Assistant</title>
+    <link rel="stylesheet" href="chat.css" />
 </head>
 <body>
-  <section id="assistant">
-    <h2>Ask the AI Assistant</h2>
-    <div class="chatbox">
-      <textarea id="userInput" rows="4" placeholder="Ask me anything about sales, AI, or strategy..."></textarea>
-      <button onclick="askAssistant()">Send</button>
-      <div class="response" id="aiResponse"></div>
+    <!-- AI Chat Window -->
+    <div id="chatWindow" class="chat-window hidden">
+        <h2>🤖 Tals to maxik.ai</h2>
+        <div class="chatbox">
+            <textarea id="userInput" rows="4" placeholder="Ask me anything about sales, AI, or strategy..."></textarea>
+            <button onclick="askAssistant()">Send</button>
+            <div class="response" id="aiResponse"></div>
+        </div>
+        <button id="closeBtn" class="close-btn">Close Chat</button>
     </div>
-  </section>
 
-  <script src="chat.js"></script>
+    <!-- Toggle Chat Button -->
+    <button id="chatToggle" class="chat-toggle">🤖</button>
+
+    <script src="chat.js"></script>
 </body>
 </html>
