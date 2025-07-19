@@ -115,21 +115,6 @@ h2, h3 {
 /* Hover ist ein Pseudo-Klassen-Selektor, der sagt:*/
 /*👉 „Wende diesen Style an, wenn der Benutzer mit der Maus über das Element fährt.“*/
 
-/* Styling für den AI-Button */
-#openAssistantBtn {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #1d4ed8;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    font-size: 1.5rem;
-    cursor: pointer;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
 
 /* Styling für das Popup-Fenster */
 #assistant {
