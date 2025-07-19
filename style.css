@@ -33,6 +33,30 @@ h2, h3 {
     margin-bottom: 8px; /* Abstand zwischen Bullet Points */
 }
 
+/* Größerer Abstand zwischen den Bullet Points in Core Competencies */
+.competencies ul li {
+  margin-bottom: 8px; /* Abstand zwischen den Punkten */
+}
+
+/* Optional: Zeilenhöhe für bessere Lesbarkeit */
+.competencies ul {
+  line-height: 1.6;
+  padding-left: 20px; /* Einzug der Liste */
+  list-style-type: disc; /* Standard-Bullets */
+}
+
+/* Größerer Abstand zwischen den Bullet Points in Core Certificates */
+.certificates ul li {
+  margin-bottom: 8px;
+}
+
+/* Optional: Zeilenhöhe für bessere Lesbarkeit */
+.certificates ul {
+  line-height: 1.6;
+  padding-left: 20px;
+  list-style-type: disc;
+}
+
 #contact {
     background-color: #ffffff;/* Weißer Hintergrund für Formularbox */
     padding: 30px; /* Innenabstand im Formular-Container */
