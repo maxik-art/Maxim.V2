@@ -106,11 +106,24 @@
         
     </main>
 
-  <button id="openAssistantBtn">🤖</button>
+ <!-- <button id="openAssistantBtn">🤖</button>
 
 <div id="assistantPopup">
     <iframe src="https://ai-website-with-assistant.onrender.com/"></iframe>
     <!--<iframe src="http://127.0.0.1:5000/"></iframe>-->
+</div>-->
+
+    <!-- Roboter-Button -->
+        <button id="chatToggle" class="chat-toggle">
+          🤖
+        </button>
+
+    <!-- Chat-Fenster (am Anfang ausgeblendet) -->
+<div id="chatWindow" class="chat-window hidden">
+      <h2>Ask the AI Assistant</h2>
+      <textarea id="userInput" rows="4" placeholder="Ask me anything..."></textarea>
+      <button onclick="askAssistant()">Send</button>
+      <div class="response" id="aiResponse"></div>
 </div>
 
     <!-- Copy Right -->
