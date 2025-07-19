@@ -15,3 +15,15 @@ document.getElementById("chatToggle").addEventListener("click", function() {
   chatWindow.classList.toggle("show");
   chatWindow.classList.toggle("hidden");
 });
+
+// Simulation
+function askAssistant() {
+  const userInput = document.getElementById("userInput").value;
+  const aiResponse = document.getElementById("aiResponse");
+
+  // Testantwort
+  aiResponse.innerHTML = `🤖 (Demo Mode) You asked: '${userInput}'. This is a placeholder response.`;
+
+  // Optional: Feld leeren
+  document.getElementById("userInput").value = "";
+}
