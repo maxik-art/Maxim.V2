@@ -32,53 +32,53 @@ main {
 }
 
 #contact form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+    display: flex; /* Aktiviert Flexbox-Layout */
+    flex-direction: column; /* Ordnet Elemente vertikal an */
+    gap: 15px; /* Abstand zwischen Formularfeldern */
 }
 
 #contact label {
-    font-weight: bold;
-    color: #333;
+    font-weight: bold; /* Fettschrift für Labels */
+    color: #333; /* Dunkelgraue Textfarbe */
 }
 
 #contact input[type="text"],
 #contact input[type="email"],
 #contact textarea {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 1rem;
-    box-sizing: border-box;
+    width: 100%; /* Felder nehmen volle Breite ein */
+    padding: 12px; /* Innenabstand im Feld */
+    border: 1px solid #ccc; /* Hellgrauer Rahmen */
+    border-radius: 5px; /* Abgerundete Ecken für Felder */
+    font-size: 1rem; /* Normale Schriftgröße */
+    box-sizing: border-box; /* Padding wird in Gesamtbreite einbezogen */
 }
 
 #contact input[type="checkbox"] {
-    margin-right: 8px;
+    margin-right: 8px; /* Abstand rechts vom Checkbox-Feld */
 }
 
 #contact button[type="submit"] {
-    background-color: #1d4ed8;
-    color: #ffffff;
-    padding: 12px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s ease;
+    background-color: #1d4ed8; /* Blau für Button */
+    color: #ffffff; /* Weißer Text auf Button */
+    padding: 12px; /* Innenabstand im Button */
+    border: none; /* Kein Rahmen um Button */
+    border-radius: 5px; /* Abgerundete Ecken beim Button */
+    cursor: pointer; /* Zeigt Zeiger bei Hover */
+    font-size: 1rem; /* Normale Schriftgröße */
+    transition: background-color 0.3s ease; /* Animierter Farbwechsel */
 }
 
 #contact button[type="submit"]:hover {
-    background-color: #2563eb;
+    background-color: #2563eb; /* Dunkleres Blau beim Hover */
 }
 
 footer {
-    text-align: center;
-    padding: 15px;
-    background-color: #111827;
-    color: white;
-    position: relative;
-    bottom: 0;
-    width: 100%;
-    margin-top: 50px;
+    text-align: center; /* Zentrierter Footer-Text */
+    padding: 15px; /* Innenabstand im Footer */
+    background-color: #111827; /* Dunkler Footer-Hintergrund */
+    color: white; /* Weißer Footer-Text */
+    position: relative; /* Normale Position im Fluss */
+    bottom: 0; /* Kein Einfluss hier wegen relative */
+    width: 100%; /* Footer über gesamte Breite */
+    margin-top: 50px; /* Abstand oberhalb des Footers */
 }
