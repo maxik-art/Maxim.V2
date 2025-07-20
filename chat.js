@@ -1,19 +1,37 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const toggleBtn = document.getElementById("chatToggle");
-    const closeBtn = document.getElementById("closeBtn");
-    const chatWindow = document.getElementById("chatWindow");
-    const userInputField = document.getElementById("userInput");
-    const aiResponse = document.getElementById("aiResponse");
+// chat.js – Saubere Version mit Chatverlauf & Close-Funktion
 
-    // Funktion zum Senden der Anfrage und Anzeigen der Antwort
-    function askAssistant() {
-    const userInput = document.getElementById('userInput').value;
-    if (!userInput.trim()) return; // Keine leeren Nachrichten
+let chatHistory = []; // Speichert den Verlauf im RAM
 
-    // Zeige Nutzereingabe
-    chatHistory.push({ sender: 'user', message: userInput });
+// Beim Laden der Seite: Prüfe ob Verlauf in localStorage existiert
+window.addEventListener('DOMContentLoaded', () => {
+    const savedHistory = JSON.parse(localStorage.getItem('chatHistory'));
+    if (savedHistory && Array.isArray(savedHistory)) {
+        chatHistory = savedHistory;
+        updateChatWindow();
+    }
+});
+
+// Öffne/Schließe das Chatfenster
+document.getElementById('chatToggle').addEventListener('click', () => {
+    const chatWindow = document.getElementById('chatWindow');
+    chatWindow.classList.toggle('hidden');
+});
+
+// Schließe-Button im Chat
+document.getElementById('closeBtn').addEventListener('click', () => {
+    document.getElementById('chatWindow').classList.add('hidden');
+});
+
+// Sende Nachricht an Backend & zeige Verlauf
+function askAssistant() {
+    const userInput = document.getElementById('userInput').value.trim();
+    if (!userInput) return; // Nichts tun bei leerem Input
+
+    // Speichere und zeige Nutzereingabe
+    addMessage('user', userInput);
     updateChatWindow();
 
+    // API-Call an Flask-Backend
     fetch('/ask', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -21,42 +39,36 @@ document.addEventListener("DOMContentLoaded", function () {
     })
     .then(response => response.json())
     .then(data => {
-        chatHistory.push({ sender: 'ai', message: data.answer });
+        addMessage('ai', data.answer);
         updateChatWindow();
     })
     .catch(error => {
         console.error('Error:', error);
+        addMessage('ai', 'Sorry, something went wrong.');
+        updateChatWindow();
     });
 
-    document.getElementById('userInput').value = '';
+    document.getElementById('userInput').value = ''; // Inputfeld leeren
 }
-        
-        let chatHistory = []; // Hier speichern wir den Verlauf
-    
-    // Toggle Chatfenster (öffnen/schließen)
-    toggleBtn.addEventListener("click", function () {
-        chatWindow.classList.toggle("hidden");
-    });
 
-    // Fenster schließen
-    closeBtn.addEventListener("click", function () {
-        chatWindow.classList.add("hidden");
+// Füge eine Nachricht zum Verlauf hinzu
+function addMessage(sender, message) {
+    chatHistory.push({ sender, message });
+    localStorage.setItem('chatHistory', JSON.stringify(chatHistory)); // Speichern im Browser
+}
 
-        // Verlauf löschen (optional)
-        // aiResponse.innerHTML = ""; // Kommentar entfernen, wenn du Verlauf löschen willst
-    });
-
-    // Globale Verfügbarkeit der askAssistant-Funktion für Button im HTML
-    window.askAssistant = askAssistant;
-});
-
+// Aktualisiere das Chatfenster mit dem kompletten Verlauf
 function updateChatWindow() {
     const responseDiv = document.getElementById('aiResponse');
-    responseDiv.innerHTML = ''; // Vorherige Inhalte löschen
+    responseDiv.innerHTML = ''; // Lösche vorherigen Inhalt
 
     chatHistory.forEach(entry => {
-        const p = document.createElement('p');
-        p.textContent = `${entry.sender === 'user' ? 'You' : 'Maxik.ai'}: ${entry.message}`;
-        responseDiv.appendChild(p);
+        const messageDiv = document.createElement('div');
+        messageDiv.classList.add('chat-message', entry.sender);
+        messageDiv.textContent = `${entry.sender === 'user' ? 'You' : 'Maxik.ai'}: ${entry.message}`;
+        responseDiv.appendChild(messageDiv);
     });
+
+    // Automatisch zum letzten Eintrag scrollen
+    responseDiv.scrollTop = responseDiv.scrollHeight;
 }
