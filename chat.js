@@ -22,10 +22,6 @@ document.getElementById('closeBtn').addEventListener('click', () => {
     document.getElementById('chatWindow').classList.add('hidden');
 });
 
-// Sende Nachricht an Backend & zeige Verlauf
-function askAssistant() {
-    const userInput = document.getElementById('userInput').value.trim();
-    if (!userInput) return; // Nichts tun bei leerem Input
 
     // Speichere und zeige Nutzereingabe
     addMessage('user', userInput);
@@ -71,4 +67,16 @@ function updateChatWindow() {
 
     // Automatisch zum letzten Eintrag scrollen
     responseDiv.scrollTop = responseDiv.scrollHeight;
+}
+
+const API_URL = "https://maxik-backend.onrender.com/ask";
+
+// Sende Nachricht an Backend & zeige Verlauf
+function askAssistant() {
+    fetch(API_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ prompt: userInput })
+    })
+    ...
 }
