@@ -1,8 +1,11 @@
 // chat.js – Saubere Version mit Chatverlauf & Close-Funktion
 
+// ✅ Setze hier die URL deines Backends auf Render ein
+const API_URL = "https://ai-website-with-assistant.onrender.com"; // Ersetze durch deine echte Render-URL
+
 let chatHistory = []; // Speichert den Verlauf im RAM
 
-// Beim Laden der Seite: Prüfe ob Verlauf in localStorage existiert
+// 🏡 Prüfe beim Laden der Seite, ob ein Verlauf in localStorage existiert
 window.addEventListener('DOMContentLoaded', () => {
     const savedHistory = JSON.parse(localStorage.getItem('chatHistory'));
     if (savedHistory && Array.isArray(savedHistory)) {
@@ -11,24 +14,28 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Öffne/Schließe das Chatfenster
+// 📌 Öffne oder schließe das Chatfenster per Klick
 document.getElementById('chatToggle').addEventListener('click', () => {
     const chatWindow = document.getElementById('chatWindow');
     chatWindow.classList.toggle('hidden');
 });
 
-// Schließe-Button im Chat
+// 📌 Schließe-Button im Chatfenster
 document.getElementById('closeBtn').addEventListener('click', () => {
     document.getElementById('chatWindow').classList.add('hidden');
 });
 
+// 🧠 Sende Nachricht an das Flask-Backend und zeige Verlauf
+function askAssistant() {
+    const userInput = document.getElementById('userInput').value.trim();
+    if (!userInput) return; // Nicht senden, wenn Eingabe leer
 
-    // Speichere und zeige Nutzereingabe
+    // Zeige Nutzereingabe im Chatfenster
     addMessage('user', userInput);
     updateChatWindow();
 
     // API-Call an Flask-Backend
-    fetch('/ask', {
+    fetch(API_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ prompt: userInput })
@@ -39,24 +46,24 @@ document.getElementById('closeBtn').addEventListener('click', () => {
         updateChatWindow();
     })
     .catch(error => {
-        console.error('Error:', error);
-        addMessage('ai', 'Sorry, something went wrong.');
+        console.error('❌ API Error:', error);
+        addMessage('ai', '❌ Sorry, the server is not responding.');
         updateChatWindow();
     });
 
-    document.getElementById('userInput').value = ''; // Inputfeld leeren
+    document.getElementById('userInput').value = ''; // Eingabefeld leeren
 }
 
-// Füge eine Nachricht zum Verlauf hinzu
+// 📌 Füge eine Nachricht zum Verlauf hinzu
 function addMessage(sender, message) {
     chatHistory.push({ sender, message });
-    localStorage.setItem('chatHistory', JSON.stringify(chatHistory)); // Speichern im Browser
+    localStorage.setItem('chatHistory', JSON.stringify(chatHistory)); // Verlauf im Browser speichern
 }
 
-// Aktualisiere das Chatfenster mit dem kompletten Verlauf
+// 📌 Aktualisiere das Chatfenster mit dem kompletten Verlauf
 function updateChatWindow() {
     const responseDiv = document.getElementById('aiResponse');
-    responseDiv.innerHTML = ''; // Lösche vorherigen Inhalt
+    responseDiv.innerHTML = ''; // Vorherigen Inhalt löschen
 
     chatHistory.forEach(entry => {
         const messageDiv = document.createElement('div');
@@ -67,16 +74,4 @@ function updateChatWindow() {
 
     // Automatisch zum letzten Eintrag scrollen
     responseDiv.scrollTop = responseDiv.scrollHeight;
-}
-
-const API_URL = "https://maxik-backend.onrender.com/ask";
-
-// Sende Nachricht an Backend & zeige Verlauf
-function askAssistant() {
-    fetch(API_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ prompt: userInput })
-    })
-    ...
 }
