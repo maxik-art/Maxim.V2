@@ -1,4 +1,4 @@
-const LOGIN_API_URL = "https://maxim-v2-backend.onrender.com/backend/login.php";
+const LOGIN_API_URL = "https://maxim-v2-backend.onrender.com/login.php";
 
 function toggleLogin() {
     const container = document.getElementById('login-container');
