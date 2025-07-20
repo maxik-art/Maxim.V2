@@ -14,6 +14,11 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+function toggleChat() {
+    const chatWindow = document.getElementById("chatWindow");
+    chatWindow.classList.toggle("show");
+}
+
 // 📌 Öffne oder schließe das Chatfenster per Klick
 document.getElementById('chatToggle').addEventListener('click', () => {
     const chatWindow = document.getElementById('chatWindow');
