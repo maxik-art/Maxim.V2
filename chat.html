@@ -4,17 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Maxik AI Assistant</title>
-    <link rel="stylesheet" href="chat.css" />
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <!-- AI Chat Window -->
+    <!-- Chat Window -->
     <div id="chatWindow" class="chat-window hidden">
-        <h2>🤖 Tals to maxik.ai</h2>
-        <div class="chatbox">
-            <textarea id="userInput" rows="4" placeholder="Ask me anything about sales, AI, or strategy..."></textarea>
-            <button onclick="askAssistant()">Send</button>
-            <div class="response" id="aiResponse"></div>
+        <h2>🤖 Talk to maxik.ai</h2>
+        <div class="chatbox" id="aiResponse">
+            <!-- Nachrichten erscheinen hier -->
         </div>
+        <textarea id="userInput" rows="4" placeholder="Ask me anything about sales, AI, or strategy..."></textarea>
+        <button onclick="askAssistant()">Send</button>
         <button id="closeBtn" class="close-btn">Close Chat</button>
     </div>
 
