@@ -195,6 +195,26 @@ button:hover {
   cursor: pointer;
 }
 
+.chat-message {
+    margin: 8px 0;
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 80%;
+    word-wrap: break-word;
+}
+
+.chat-message.user {
+    background-color: #e0f7fa; /* Hellblau für User */
+    text-align: right;
+    margin-left: auto;
+}
+
+.chat-message.ai {
+    background-color: #f1f8e9; /* Hellgrün für AI */
+    text-align: left;
+    margin-right: auto;
+}
+
 footer {
     text-align: center; /* Zentrierter Footer-Text */
     padding: 15px; /* Innenabstand im Footer */
