@@ -1,7 +1,7 @@
 // chat.js – Saubere Version mit Chatverlauf & Close-Funktion
 
 // ✅ Setze hier die URL deines Backends auf Render ein
-const API_URL = "https://ai-website-with-assistant.onrender.com"; // Ersetze durch deine echte Render-URL
+const API_URL = "https://ai-website-with-assistant.onrender.com"/ask; // Ersetze durch deine echte Render-URL
 
 let chatHistory = []; // Speichert den Verlauf im RAM
 
