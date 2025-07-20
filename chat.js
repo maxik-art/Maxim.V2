@@ -7,17 +7,32 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Funktion zum Senden der Anfrage und Anzeigen der Antwort
     function askAssistant() {
-        const userInput = userInputField.value.trim();
-        if (userInput === "") return; // Keine leeren Eingaben verarbeiten
+    const userInput = document.getElementById('userInput').value;
+    if (!userInput.trim()) return; // Keine leeren Nachrichten
 
-        aiResponse.innerHTML += `
-            <p><strong>You:</strong> ${userInput}</p>
-            <p>🤖 (Demo Mode) AI says: This is a placeholder response.</p>
-        `;
-        userInputField.value = "";
-        aiResponse.scrollTop = aiResponse.scrollHeight; // Scroll nach unten
-    }
+    // Zeige Nutzereingabe
+    chatHistory.push({ sender: 'user', message: userInput });
+    updateChatWindow();
 
+    fetch('/ask', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ prompt: userInput })
+    })
+    .then(response => response.json())
+    .then(data => {
+        chatHistory.push({ sender: 'ai', message: data.answer });
+        updateChatWindow();
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+
+    document.getElementById('userInput').value = '';
+}
+        
+        let chatHistory = []; // Hier speichern wir den Verlauf
+    
     // Toggle Chatfenster (öffnen/schließen)
     toggleBtn.addEventListener("click", function () {
         chatWindow.classList.toggle("hidden");
@@ -34,3 +49,14 @@ document.addEventListener("DOMContentLoaded", function () {
     // Globale Verfügbarkeit der askAssistant-Funktion für Button im HTML
     window.askAssistant = askAssistant;
 });
+
+function updateChatWindow() {
+    const responseDiv = document.getElementById('aiResponse');
+    responseDiv.innerHTML = ''; // Vorherige Inhalte löschen
+
+    chatHistory.forEach(entry => {
+        const p = document.createElement('p');
+        p.textContent = `${entry.sender === 'user' ? 'You' : 'Maxik.ai'}: ${entry.message}`;
+        responseDiv.appendChild(p);
+    });
+}
